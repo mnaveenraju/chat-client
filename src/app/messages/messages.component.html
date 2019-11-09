@@ -1,0 +1,21 @@
+<div class="messages">
+
+  <ng-container *ngFor="let message of messages; let index">
+    <div class="message" [ngStyle]="{'justify-content': message.fromId==user.id? 'flex-end': 'flex-start'}">
+      <p>
+        {{message.message}}
+      </p>
+    </div>
+  </ng-container>
+
+  
+</div>
+
+<form [formGroup]="messageFrom" (ngSubmit)="sendMessage(messageFrom.value)">
+    <mat-form-field class="example-full-width">
+      <input formControlName="message" matInput placeholder="Enter Message">
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!messageFrom.valid" mat-raised-button mat-button color="primary">Send</button>
+
+  </form>

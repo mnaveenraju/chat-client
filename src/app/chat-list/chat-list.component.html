@@ -1,0 +1,27 @@
+<div class="chat">
+  <div class="chat-list">
+    <div>
+      <h2> Chat </h2>
+    </div>
+    <div>
+      <h3>Persons</h3>
+      <div>
+        <ng-container *ngFor="let user of userList; let index">
+          <mat-card (click)="chatWithUser(user._id, 'user')">{{user.firstName}}</mat-card>
+        </ng-container>
+      </div>
+    </div>
+    <div>
+      <h3>Groups</h3>
+      <div>
+          <ng-container *ngFor="let group of groupList; let index">
+            <mat-card (click)="chatWithUser(group._id, 'group')">{{group.name}}</mat-card>
+          </ng-container>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedChatId" class="chat-messages">
+    <app-messages [selectedChatId] ="selectedChatId" [chatType]="chatType"></app-messages>
+  </div>
+</div>
